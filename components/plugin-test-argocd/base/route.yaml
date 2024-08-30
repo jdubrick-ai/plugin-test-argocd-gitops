@@ -1,0 +1,19 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: plugin-test-argocd
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: plugin-test-argocd 
+  name: plugin-test-argocd
+spec:
+  port:
+    targetPort: 8501
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: plugin-test-argocd 
+    weight: 100 
+  wildcardPolicy: None

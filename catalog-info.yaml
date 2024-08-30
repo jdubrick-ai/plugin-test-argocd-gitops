@@ -1,0 +1,21 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: plugin-test-argocd-gitops
+  description: This is GitOps manifest for plugin-test-argocd   
+  links:
+    - url: https://www.redhat.com/en/solutions/trusted-software-supply-chain
+      title: Trusted Secure Supply Chain 
+      icon: dashboard
+      type: admin-dashboard
+  annotations:    
+    argocd/app-name: plugin-test-argocd
+    janus-idp.io/tekton: plugin-test-argocd 
+    backstage.io/kubernetes-id: plugin-test-argocd 
+    backstage.io/techdocs-ref: dir:. 
+spec:
+  type: gitops
+  owner: user:guest 
+  lifecycle: experimental
+  dependsOn:
+    - component:plugin-test-argocd
